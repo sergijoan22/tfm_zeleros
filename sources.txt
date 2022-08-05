@@ -1,0 +1,17 @@
+FLIGHTS SPAIN
+    https://nap.mitma.es/Files/Detail/920
+    Descargar la version TXT AECFA
+    Usa los codigos de aeropuerto IATA
+    Renombrar el archivo a F_ES.txt ya que el nombre va cambiando (automatizxar luego)
+
+TRAIN SPAIN
+    https://nap.mitma.es/Files/Detail/897
+    Poner los archivos de dentro del zip dentro de la carpeta correspondiente
+    Los datos vienen en varias tablas usando un modelo GTFS
+
+
+AIRPORTS DATA
+    https://ourairports.com/data/airports.csv
+    Se lee directamente de la web
+
+
