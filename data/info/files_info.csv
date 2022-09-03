@@ -1,0 +1,11 @@
+ruta_ori,ruta_des,actualizar
+data\F_ES.txt,spain/F_ES.txt,1
+data\T_ES\agency.txt,spain/train_agency.txt,1
+data\T_ES\calendar_dates.txt,spain/train_calendar_dates.txt,1
+data\T_ES\calendar.txt,spain/train_calendar.txt,1
+data\T_ES\routes.txt,spain/train_routes.txt,1
+data\T_ES\stop_times.txt,spain/train_stop_times.txt,1
+data\T_ES\stops.txt,spain/train_stop_times.txt,1
+data\T_ES\trips.txt,spain/train_trips.txt,1
+data\worldcities.csv,global/worldcities.csv,1
+data\airports.csv,global/airports.csv,1
