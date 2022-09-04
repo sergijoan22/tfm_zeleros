@@ -7,7 +7,7 @@
 
 ## Google Cloud Storage
 
-Se usa de data lake para guardar los archivos en bruto antes de tratarlos.
+Data lake para guardar los archivos en bruto antes de tratarlos.
 
 Se ha creado un bucket llamado tfm_zeleros_bucket con varias carpetas dentro para tener los archivos ordenados (Hay que ver la mejor manera para organizarlo). El bucket esta en la zona europe-southwest1 (En Madrid, que se estreno hace poco)
 

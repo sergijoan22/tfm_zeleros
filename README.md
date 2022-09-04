@@ -34,6 +34,46 @@ pip freeze > requirements.txt
 
 Se ha usado Google Cloud, en este [README](https://github.com/sergijoan22/tfm_zeleros_google_cloud/README.md) hay información de lo que se ha usado
 
+## Preparar y subir archivos a Google Cloud
+
+### Descargar archivos
+
+#### Flights Spain
+
+1. Ir a https://nap.mitma.es/Files/Detail/920
+2. Descargar la version TXT AECFA
+3. Renombrar el archivo a F_ES.txt ya que el nombre va cambiando
+4. Poner el archivo en la carpeta data
+
+#### Train Spain
+
+1. Ir a https://nap.mitma.es/Files/Detail/897
+2. Descargar la versión GTFS
+3. Renombrar el zip a T_ES.zip
+4. Poner el zip en la carpeta data
+
+#### Airports data
+
+1. Al ejecutar el script se cargan de la web a Cloud Storage directamente (Desde https://ourairports.com/data/airports.csv)
+
+#### World Cities
+
+1. Ir a https://simplemaps.com/data/world-cities
+2. Descargar el archivo de la versión Basic
+3. Poner en zip en la carpeta data
+
+### Preparar archivos
+
+Una vez hecho el paso anterior, el script `prepare_data.py` ubicado en la carpeta Google Cloud prepara los archivos para ser subidos a Cloud Storage.
+
+### Subir los archivos
+
+Dentro de la carpeta Google Cloud, el archivo `data_to_cloud_storage.py` sube los archivos desde la carpeta a Cloud Storage.
+
+En el archivo `files_info.csv` de la carpeta data/info está especificado el nombre de los archivos y donde se van a cargar dentro del bucket de Cloud Storage. 
+
+El script usa el archivo para saber que archivos subir a Cloud Storage. El campo actualizar se puede tocar para elegir que archivos actualizar y cuales no.
+
 ## Organización
 
 (ESTO VA A CAMBIARSE, NO HACER CASO)
