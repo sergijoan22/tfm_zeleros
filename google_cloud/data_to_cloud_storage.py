@@ -3,6 +3,8 @@
 # librerias
 from google.cloud import storage
 import pandas as pd
+import os
+import shutil
 
 # id del proyecto en google cloud
 project_id = 'tfm-zeleros'
@@ -27,10 +29,15 @@ if __name__ == "__main__":
     storage_client = storage.Client(project=project_id)
 
     # lee el archivo que indica que hay que subir
-    files_to_refresh = pd.read_csv(r'data\info\files_info.csv')
+    files_to_refresh = pd.read_csv('google_cloud/files_info.csv')
     # omitir archivos que se ha especificado no actualizar
     files_to_refresh = files_to_refresh[files_to_refresh['actualizar'] == 1]
     
-    # sube todos los archivos
+    # sube todos los archivos si los encuentra
     for row in files_to_refresh.index:
-        upload_file(files_to_refresh['ruta_ori'][row], files_to_refresh['ruta_des'][row])
+        if os.path.exists(files_to_refresh['ruta_ori'][row]):
+            upload_file(files_to_refresh['ruta_ori'][row], files_to_refresh['ruta_des'][row])
+        
+    # vacía la carpeta data
+    shutil.rmtree('data')
+    os.mkdir('data')

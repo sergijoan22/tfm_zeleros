@@ -9,6 +9,7 @@ url_airports = "https://ourairports.com/data/airports.csv"
 response = requests.get(url_airports, stream=True)
 
 # guardar en un archivo
+# ! lo está guardando en binario por lo que luego al leerlo da problemas
 with open('data/airports.csv', 'wb') as out_file:
   shutil.copyfileobj(response.raw, out_file)
 print('Aeropuertos mundo: Actualizado')
@@ -16,7 +17,7 @@ print('Aeropuertos mundo: Actualizado')
 # DESCOMPRIMIR ZIP TRENES ESPAÑA
 try:
     # borrar carpeta si existe
-    if os.path.isdir('data\T_ES') and os.path.isdir('data\T_ES.zip'):
+    if os.path.isdir('data\T_ES') and os.path.exists('data\T_ES.zip'):
         shutil.rmtree('data\T_ES')
     # descomprimir zip
     with zipfile.ZipFile('data\T_ES.zip', 'r') as zip_ref:
