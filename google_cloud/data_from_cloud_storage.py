@@ -2,7 +2,8 @@
 
 # librerias
 from google.cloud import storage
-#import sys ----------------------------------
+import pandas as pd
+import os
 
 # id del proyecto en google cloud
 project_id = 'tfm-zeleros'
@@ -28,5 +29,19 @@ if __name__ == "__main__":
     # identificarse en Google Cloud
     storage_client = storage.Client(project=project_id)
     
-    # descarga el archivo
-    download_file('global/airports.csv', 'data_cs/airports.csv')
+    # lee el archivo que indica que hay que subir
+    files_to_process = pd.read_csv('google_cloud/files_info.csv')
+    # omitir archivos que se ha especificado no actualizar
+    files_to_process = files_to_process[files_to_process['actualizar'] == 1]
+    
+    # si los archivos se quieren guardar en un directorio que no existe da error
+    # por lo que hay que crearlo antes
+    directorios = ['data/T_ES'] 
+    for dir in directorios:
+        if not(os.path.isdir(dir)):
+            os.mkdir(dir)
+    
+    # descarga todos los archivos
+    for row in files_to_process.index:
+        download_file(files_to_process['ruta_des'][row], files_to_process['ruta_ori'][row])
+        
