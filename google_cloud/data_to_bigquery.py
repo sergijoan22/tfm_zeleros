@@ -45,3 +45,6 @@ print(
         table.num_rows, len(table.schema), table_id
     )
 )
+
+# borrar la carpeta data
+#shutil.rmtree('data')
