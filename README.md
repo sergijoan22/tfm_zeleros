@@ -38,6 +38,14 @@ Se ha usado Google Cloud, en este [README](https://github.com/sergijoan22/tfm_ze
 
 ### Descargar archivos
 
+#### Flights Europe
+1. Ir a https://ec.europa.eu/eurostat/data/database
+2. Database by Theme
+3. Transport > Air transport
+4. Air transport messurement passengers y Air transport messurement freight and mail
+5. Descargar archivos dentro de la categoría "Detailed"
+
+
 #### Flights Spain
 
 1. Ir a https://nap.mitma.es/Files/Detail/920
@@ -74,12 +82,19 @@ En el archivo `files_info.csv` de la carpeta data/info está especificado el nom
 
 El script usa el archivo para saber que archivos subir a Cloud Storage. El campo actualizar se puede tocar para elegir que archivos actualizar y cuales no.
 
-## Organización
+## ETL Aviación y Cargo:
+Los datos descargados tienen formato .tsv. Cambiamos el formato a csv para su carga y tratamiento en Google Cloud.
 
-(ESTO VA A CAMBIARSE, NO HACER CASO)
+Una vez subidos los datos, creamos dos Cloud Functions, para pasajeros y para cargo, ya que tienen estructuras diferentes.
+
+Dentro de la ETL se limpian y transforman los archivos para que obtengan la misma estructura y poder realizar un join en Big Query, obteniendo una vista denominada DATOS_PBI que muestra todos los datos necesarios de aviación para su análisis y visualización en Power BI.
+
+## Organización
 
 La carpeta `data_in` contiene archivos con datos recogidos. El archivo `sources.txt` explica como se han obtenido
 
 La carpeta `etl` tiene scripts que transformar los datos de `data_in` a la carpeta de `data_out`. Los archivos se diferencias usando el código del país, además de una F para datos de vuelo y una T para datos de tren.
 
-La carpeta `reports` contiene archivos que sirvan para mostrar los datos obtenidos.  
+La carpeta `reports` contiene archivos que sirvan para mostrar los datos obtenidos.
+
+La carpeta `ETL_aviacion` contiene los dos scripts de Python que se ejecutan en las Cloud Functions generadas en Google Cloud.
