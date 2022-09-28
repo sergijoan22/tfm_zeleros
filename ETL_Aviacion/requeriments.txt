@@ -1,0 +1,8 @@
+pandas>=1.4.4
+pandas_gbq>=0.17.8
+numpy>=1.23.2
+google-api-python-client>=1.8.0
+google-cloud-storage>=1.27.0
+google-cloud-bigquery>=1.24.0
+fsspec
+gcsfs
